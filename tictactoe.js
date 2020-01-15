@@ -20,3 +20,4 @@ game.play('X',5)
 game.play('Y',5)
 
 console.log(game.gameboard[5])
+
