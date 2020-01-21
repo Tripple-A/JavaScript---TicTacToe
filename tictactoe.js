@@ -6,6 +6,7 @@ const Player1 = Player('Jeff');
 const Player2 = Player('Rama')
 const squares = document.querySelectorAll('.squares')
 let counter = 0
+let result = document.querySelector('.result')
 
 const game = (() => {
   let gameboard = [];
@@ -23,10 +24,9 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
   
   const play = (tool, position) => {
      gameboard[position] = tool
-     console.log(gameboard)
   };
   return {
-   check, play 
+   check, clearboard, play 
   };
 })();
 
@@ -40,8 +40,8 @@ const Umpire = (() => {
           counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
-        if (this.sayResult()) {
-           this.endGame() 
+        if (Umpire.sayResult()) {
+           Umpire.endGame() 
           }
         } else {
     document.querySelector('.warn').style.display = 'block'
@@ -51,18 +51,22 @@ const Umpire = (() => {
   }
   const sayResult = () => {
     if (game.check() == 'X') {
-      document.querySelector('.result').innerHTML = `Congratulations ${Player1.name}, You are the winner`
+      result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
       return true
     } else if(game.check() == 'O') {
-      document.querySelector('.result').innerHTML = `Congratulations ${Player2.name}, You are the winner`
+      result.innerHTML = `Congratulations ${Player2.name}, You are the winner`
       return true
     }
     return false
   }
 const restartGame = () => {
-  game.clearboard()
+  counter = 0;
+  result.innerHTML = '';
+  result.style.display = 'none';
+  game.clearboard();
   squares.forEach(square => {
     square.textContent = ''
+    square.disabled = false
   })
 }
    const endGame = () => {
