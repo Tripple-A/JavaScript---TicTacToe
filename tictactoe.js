@@ -3,6 +3,7 @@ const Player = name =>{
 }
 
 const Player1 = Player('Jeff');
+const Player2 = Player('Rama')
 const squares = document.querySelectorAll('.squares')
 let counter = 0
 
@@ -21,7 +22,7 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
      console.log(gameboard)
   };
   return {
-   check, gameboard, play 
+   check, play 
   };
 })();
 
@@ -29,6 +30,9 @@ const Umpire = (() => {
   const sayResult = () => {
     if (game.check() == 'X') {
       document.querySelector('.result').innerHTML = `Congratulations ${Player1.name}, You are the winner`
+      return true
+    } else if(game.check() == 'O') {
+      document.querySelector('.result').innerHTML = `Congratulations ${Player2.name}, You are the winner`
       return true
     }
     return false
