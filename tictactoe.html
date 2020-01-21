@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="tictactoe.css">
 </head>
 <body>
+    <h2>TICTACTOE GAME</h2>
+    <div class="form">
+        <label for="player1"> Player 1 Name</label>
+        <input type="text" class="player1">
+        <label for="player2"> Player 2 Name</label>
+        <input type="text" class="player2">
+        <button id="start" onclick="Umpire.restartGame()">START GAME</button>
+    </div>
     <div class="warn">Please click an empty box</div> <br>
-    <div class="result"></div>
     <div class="container">
         <button class="squares one" id="1"></button>
         <button class="squares two" id="2"></button>
@@ -21,7 +28,7 @@
         <button class="squares eight" id="8"></button>
         <button class="squares nine" id="9"></button>
     </div> <br>
-    
+    <div class="result"></div>
     <script src="tictactoe.js"></script>
 </body>
 </html>

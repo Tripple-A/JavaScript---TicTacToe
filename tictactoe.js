@@ -2,9 +2,12 @@ const Player = name =>{
     return {name}
 }
 
-const Player1 = Player('Jeff');
-const Player2 = Player('Rama')
+let Player1 = Player('Jeff');
+let Player2 = Player('Rama')
 const squares = document.querySelectorAll('.squares')
+const form = document.querySelector('.form')
+let name1 = document.querySelector('.player1')
+let name2 = document.querySelector('.player2')
 let counter = 0
 let result = document.querySelector('.result')
 
@@ -18,6 +21,14 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
     return false
   }
 
+  const start = () => {
+    if(name1.value != '' && name2.value != '') {
+      Player1 = Player(name1.value)
+      Player2 = Player(name2.value)
+      return true
+    }
+    return false
+  }
   const clearboard = () => {
     gameboard = []
   }
@@ -26,23 +37,21 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
      gameboard[position] = tool
   };
   return {
-   check, clearboard, play 
+   check, clearboard, play, start
   };
 })();
 
 const Umpire = (() => {
-
   const startGame = () => {
+    form.style.display = 'none'
     squares.forEach(square => {
       square.addEventListener('click', () => {
-        document.querySelector('.warn').style.display = 'none'
         if (square.textContent == '') {
+          document.querySelector('.warn').style.display = 'none'
           counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
-        if (Umpire.sayResult()) {
-           Umpire.endGame() 
-          }
+        Umpire.sayResult() || counter == 9 ? Umpire.endGame() : null
         } else {
     document.querySelector('.warn').style.display = 'block'
         }
@@ -50,6 +59,7 @@ const Umpire = (() => {
     })    
   }
   const sayResult = () => {
+    result.style.display = 'block'
     if (game.check() == 'X') {
       result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
       return true
@@ -57,6 +67,7 @@ const Umpire = (() => {
       result.innerHTML = `Congratulations ${Player2.name}, You are the winner`
       return true
     }
+    counter == 9? result.innerHTML = `This is a tie between ${Player1.name} and ${Player2.name}` : null
     return false
   }
 const restartGame = () => {
@@ -67,6 +78,7 @@ const restartGame = () => {
   squares.forEach(square => {
     square.textContent = ''
     square.disabled = false
+    game.start()? Umpire.startGame() : null
   })
 }
    const endGame = () => {
