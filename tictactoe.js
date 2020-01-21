@@ -1,6 +1,15 @@
 const Player = name =>{
     return {name}
 }
+class Umpire {
+  constructor (age) {
+    this.age = age
+  }
+
+  sayResult () {
+    console.log(`You are young at ${this.age}`)
+  }
+}
 
 const game = (() => {
   let gameboard = [] 
@@ -20,4 +29,6 @@ game.play('X',5)
 game.play('Y',5)
 
 console.log(game.gameboard[5])
+
+new Umpire(10).sayResult()
 
