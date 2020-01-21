@@ -8,7 +8,7 @@ const squares = document.querySelectorAll('.squares')
 let counter = 0
 
 const game = (() => {
-  const gameboard = [];
+  let gameboard = [];
 
   const check = () => {
 if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
@@ -17,6 +17,10 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
     return false
   }
 
+  const clearboard = () => {
+    gameboard = []
+  }
+  
   const play = (tool, position) => {
      gameboard[position] = tool
      console.log(gameboard)
@@ -36,8 +40,8 @@ const Umpire = (() => {
           counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
-        if (Umpire.sayResult()) {
-           Umpire.endGame() 
+        if (this.sayResult()) {
+           this.endGame() 
           }
         } else {
     document.querySelector('.warn').style.display = 'block'
@@ -55,12 +59,18 @@ const Umpire = (() => {
     }
     return false
   }
+const restartGame = () => {
+  game.clearboard()
+  squares.forEach(square => {
+    square.textContent = ''
+  })
+}
    const endGame = () => {
     squares.forEach(button => {
       button.disabled = true
     })
   }
   return {
-    endGame, sayResult ,startGame
+    endGame, restartGame, sayResult ,startGame
   }
   })();
