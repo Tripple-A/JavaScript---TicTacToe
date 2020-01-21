@@ -2,6 +2,8 @@ const Player = name =>{
     return {name}
 }
 
+const Player1 = Player('Jeff');
+
 const squares = document.querySelectorAll('.squares')
 let counter = 0
 squares.forEach(square => {
@@ -11,35 +13,39 @@ squares.forEach(square => {
       counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
       counter += 1
       game.play(square.textContent , parseInt(square.id - '1',10))
+     Umpire.sayResult()
     } else {
 document.querySelector('.warn').style.display = 'block'
     }
 })
 })
-
-class Umpire {
-  constructor (age) {
-    this.age = age
-  }
-
-  sayResult () {
-    console.log(`You are young at ${this.age}`)
+const Umpire = (() => {
+const sayResult = () => {
+  if (game.check() == 'X') {
+    document.querySelector('.result').innerHTML = `Congratulations ${Player1.name}, You are the winner`
   }
 }
+return {
+  sayResult
+}
+})();
 
 const game = (() => {
   const gameboard = [];
+
+  const check = () => {
+if((gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) || 
+  (gameboard[0] == gameboard[3] && gameboard[0]== gameboard[6])) {
+    return gameboard[0]
+    }
+  }
 
   const play = (tool, position) => {
      gameboard[position] = tool
      console.log(gameboard)
   };
   return {
-    gameboard, play
+   check, gameboard, play 
   };
 })();
 
-const player1 = Player('Jeff');
-new Umpire(10).sayResult()
-
-console.log(game.gameboard[5]);
