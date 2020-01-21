@@ -6,6 +6,7 @@ let Player1 = Player('Jeff');
 let Player2 = Player('Rama')
 const squares = document.querySelectorAll('.squares')
 const form = document.querySelector('.form')
+const replay = document.querySelector('.replay')
 let name1 = document.querySelector('.player1')
 let name2 = document.querySelector('.player2')
 let counter = 0
@@ -22,6 +23,7 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
   }
 
   const start = () => {
+
     if(name1.value != '' && name2.value != '') {
       Player1 = Player(name1.value)
       Player2 = Player(name2.value)
@@ -41,6 +43,22 @@ if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
   };
 })();
 
+const display = (() => {
+  const endGame = () => {
+    squares.forEach(button => {
+      button.disabled = true
+    })
+  }
+  const startNew = () => {
+    endGame();
+    form.style.display = 'block'
+    replay.style.display = 'none'
+      }
+  return {
+    endGame, startNew
+  }
+})();
+
 const Umpire = (() => {
   const startGame = () => {
     form.style.display = 'none'
@@ -51,15 +69,14 @@ const Umpire = (() => {
           counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
-        Umpire.sayResult() || counter == 9 ? Umpire.endGame() : null
-        } else {
-    document.querySelector('.warn').style.display = 'block'
+        Umpire.sayResult() || counter == 9 ? display.endGame() : null
         }
     })
     })    
   }
   const sayResult = () => {
-    result.style.display = 'block'
+    result.innerHTML =''
+    replay.style.display = 'block'
     if (game.check() == 'X') {
       result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
       return true
@@ -67,13 +84,12 @@ const Umpire = (() => {
       result.innerHTML = `Congratulations ${Player2.name}, You are the winner`
       return true
     }
-    counter == 9? result.innerHTML = `This is a tie between ${Player1.name} and ${Player2.name}` : null
+    counter == 9? result.innerHTML = `This is a tie between ${Player1.name} and ${Player2.name},feel free to replay` : null
     return false
   }
 const restartGame = () => {
   counter = 0;
-  result.innerHTML = '';
-  result.style.display = 'none';
+  replay.style.display = 'none';
   game.clearboard();
   squares.forEach(square => {
     square.textContent = ''
@@ -81,12 +97,9 @@ const restartGame = () => {
     game.start()? Umpire.startGame() : null
   })
 }
-   const endGame = () => {
-    squares.forEach(button => {
-      button.disabled = true
-    })
-  }
   return {
-    endGame, restartGame, sayResult ,startGame
+     restartGame, sayResult ,startGame
   }
   })();
+
+  
