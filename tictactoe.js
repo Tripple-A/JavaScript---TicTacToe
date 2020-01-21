@@ -42,8 +42,6 @@ const Umpire = (() => {
     endGame, sayResult
   }
   })();
-
-
 squares.forEach(square => {
   square.addEventListener('click', () => {
     document.querySelector('.warn').style.display = 'none'
