@@ -12,23 +12,21 @@ class Umpire {
 }
 
 const game = (() => {
-  let gameboard = [] 
+  const gameboard = [];
 
-  const play= (tool,position) => {
-   gameboard[position] == null ? gameboard[position] = tool : console.log('Please,replay: Position picked is occupied')
-  }
-  return{
-      gameboard , play
-  } 
-   
-  })();
+  const play = (tool, position) => {
+    gameboard[position] == null ? gameboard[position] = tool : console.log('Please,replay: Position picked is occupied');
+  };
+  return {
+    gameboard, play
+  };
+})();
 
-const player1 = Player('Jeff')
-console.log(player1.name)
-game.play('X',5)
-game.play('Y',5)
-
-console.log(game.gameboard[5])
+const player1 = Player('Jeff');
+console.log(player1.name);
+game.play('X', 5);
+game.play('Y', 5);
 
 new Umpire(10).sayResult()
 
+console.log(game.gameboard[5]);
