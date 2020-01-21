@@ -4,28 +4,39 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin:0px auto;
-        margin-top:10%;
+        margin-top:3%;
     }
 
     .squares{
         width: 100px;
         height: 100px;
         border:1px solid black;
+        font-size: 50px;
+        text-align: center;
+        padding-top: 40%;
     }
 
-    #one, #two ,#three{
-border-top: none ;
-border-bottom:2px solid black;
+    .one, .two ,.three{
+        border-top: none ;
+        border-bottom:2px solid black;
     }
-    #one,#four,#seven{
+    .one,.four,.seven{
         border-left: none;
         border-right: 2px solid black;
     }
-    #three,#six,#nine{
+    .three,.six,.nine{
         border-right: none;
         border-left: 2px solid black;
     }
-    #seven,#eight,#nine{
+    .seven,.eight,.nine{
         border-bottom: none;
         border-top: 2px solid black;
     }
+    .warn{
+background-color: red;
+text-align: center;
+width:30%;
+font-size: 16px;
+margin: 0px auto;
+display:none;
+   }
