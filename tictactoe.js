@@ -16,20 +16,19 @@ const game = (() => {
   let gameboard = [];
 
   const check = () => {
-if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
-    return gameboard[0]
-    } 
-    if(gameboard[0] == gameboard[3] && gameboard[0]== gameboard[6]) {
+    if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
       return gameboard[0]
       } 
-      if(gameboard[1] == gameboard[4] && gameboard[1]== gameboard[7]) {
+      if(gameboard[1] == gameboard[7] && gameboard[4]== gameboard[1]) {
         return gameboard[1]
         } 
         if(gameboard[2] == gameboard[5] && gameboard[2]== gameboard[8]) {
-          return gameboard[2]
+          return gameboard[8]
           } 
-          
-    return false
+          if(gameboard[0] == gameboard[3] && gameboard[3]== gameboard[6]) {
+            return gameboard[3]
+            } 
+      return false
   }
 
   const check2 = () => {
