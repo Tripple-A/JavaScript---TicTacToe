@@ -19,27 +19,46 @@ const game = (() => {
 if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
     return gameboard[0]
     } 
+    if(gameboard[0] == gameboard[3] && gameboard[0]== gameboard[6]) {
+      return gameboard[0]
+      } 
+      if(gameboard[1] == gameboard[4] && gameboard[1]== gameboard[7]) {
+        return gameboard[1]
+        } 
+        if(gameboard[2] == gameboard[5] && gameboard[2]== gameboard[8]) {
+          return gameboard[2]
+          } 
+          
     return false
   }
 
-  const start = () => {
-
-    if(name1.value != '' && name2.value != '') {
-      Player1 = Player(name1.value)
-      Player2 = Player(name2.value)
-      return true
-    }
-    return false
+  const check2 = () => {
+    if(gameboard[3] == gameboard[4] && gameboard[3]== gameboard[5]) {
+      return gameboard[3]
+      } 
+      if(gameboard[6] == gameboard[7] && gameboard[6]== gameboard[8]) {
+        return gameboard[6]
+        } 
+        if(gameboard[0] == gameboard[4] && gameboard[0]== gameboard[8]) {
+          return gameboard[0]
+          } 
+          if(gameboard[2] == gameboard[4] && gameboard[2]== gameboard[6]) {
+            return gameboard[2]
+            } 
+      return false
   }
+
+  
   const clearboard = () => {
     gameboard = []
   }
   
   const play = (tool, position) => {
      gameboard[position] = tool
+     console.log(gameboard)
   };
   return {
-   check, clearboard, play, start
+   check,check2, clearboard, play
   };
 })();
 
@@ -54,8 +73,17 @@ const display = (() => {
     form.style.display = 'block'
     replay.style.display = 'none'
       }
+      const start = () => {
+
+        if(name1.value != '' && name2.value != '') {
+          Player1 = Player(name1.value)
+          Player2 = Player(name2.value)
+          return true
+        }
+        return false
+      }
   return {
-    endGame, startNew
+    endGame, start, startNew
   }
 })();
 
@@ -77,10 +105,10 @@ const Umpire = (() => {
   const sayResult = () => {
     result.innerHTML =''
     replay.style.display = 'block'
-    if (game.check() == 'X') {
+    if (game.check() == 'X' || game.check2() == 'X') {
       result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
       return true
-    } else if(game.check() == 'O') {
+    } else if(game.check() == 'O' || game.check2() == 'O') {
       result.innerHTML = `Congratulations ${Player2.name}, You are the winner`
       return true
     }
@@ -94,7 +122,7 @@ const restartGame = () => {
   squares.forEach(square => {
     square.textContent = ''
     square.disabled = false
-    game.start()? Umpire.startGame() : null
+    display.start()? Umpire.startGame() : null
   })
 }
   return {
