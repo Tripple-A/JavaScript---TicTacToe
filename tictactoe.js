@@ -54,7 +54,6 @@ const game = (() => {
   
   const play = (tool, position) => {
      gameboard[position] = tool
-     console.log(gameboard)
   };
   return {
    check,check2, clearboard, play
