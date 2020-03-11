@@ -5,7 +5,7 @@
   "main": "tictactoe.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint tictactoe.js --fix"
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
