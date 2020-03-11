@@ -1,5 +1,25 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable func-names */
+
+const getDomEl = (id) => {
+  const domEl = document.getElementById(id);
+  return domEl;
+};
+
+const playerNames = [];
+
+getDomEl('ttt-form').addEventListener('submit', (e) => {
+  playerNames[0] = getDomEl('player1').value;
+  playerNames[1] = getDomEl('player2').value;
+  getDomEl('gameboard').classList.remove('d-none');
+  getDomEl('ttt-form').classList.add('d-none');
+  getDomEl(
+    'declare',
+  ).innerText = `${playerNames[0]} is playing X : ${playerNames[1]} is playing O`;
+  e.preventDefault();
+});
+
+
 const gameboard = document.getElementById('gameboard');
 const squares = gameboard.querySelectorAll('.square');
 const squaresArray = Array.from(squares);
@@ -46,6 +66,8 @@ function changePlayer() {
 
 function myNotice(alert) {
   document.getElementById('notice').innerText = alert;
+  getDomEl('gameboard').classList.add('d-none');
+  getDomEl('replay').classList.remove('d-none');
 }
 
 function checkIfWon() {
@@ -63,13 +85,13 @@ function checkIfWon() {
       }
 
       if (Xs === 3) {
-        myNotice('X won!');
+        myNotice(`${playerNames[0]} won!`);
         clearState();
         break;
       }
 
       if (Os === 3) {
-        myNotice('O won!');
+        myNotice(`${playerNames[1]} won!`);
         clearState();
         break;
       }
@@ -99,3 +121,10 @@ function launchGame() {
 
 
 launchGame();
+
+getDomEl('replay').addEventListener('click', (e) => {
+  getDomEl('gameboard').classList.remove('d-none');
+  getDomEl('notice').innerText = '';
+  getDomEl('replay').classList.add('d-none');
+  e.preventDefault();
+});
