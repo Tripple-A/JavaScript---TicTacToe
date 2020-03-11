@@ -1,133 +1,101 @@
-const Player = name => ({ name });
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable func-names */
+const gameboard = document.getElementById('gameboard');
+const squares = gameboard.querySelectorAll('.square');
+const squaresArray = Array.from(squares);
+const winStates = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+const players = ['x', 'o'];
 
-let Player1 = Player('Jeff');
-let Player2 = Player('Rama');
-
-const squares = document.querySelectorAll('.squares');
-const form = document.querySelector('.form');
-const replay = document.querySelector('.replay');
-const name1 = document.querySelector('.player1');
-const name2 = document.querySelector('.player2');
-let counter = 0;
-const result = document.querySelector('.result');
-
-
-const game = (() => {
-  let gameboard = [];
-
-  const check = () => {
-    if (gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) {
-      return gameboard[0];
-    }
-    if (gameboard[1] === gameboard[7] && gameboard[4] === gameboard[1]) {
-      return gameboard[1];
-    }
-    if (gameboard[2] === gameboard[5] && gameboard[2] === gameboard[8]) {
-      return gameboard[8];
-    }
-    if (gameboard[0] === gameboard[3] && gameboard[3] === gameboard[6]) {
-      return gameboard[3];
-    }
-    return false;
-  };
-
-  const check2 = () => {
-    if (gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) {
-      return gameboard[3];
-    }
-    if (gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) {
-      return gameboard[6];
-    }
-    if (gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8]) {
-      return gameboard[0];
-    }
-    if (gameboard[2] === gameboard[4] && gameboard[2] === gameboard[6]) {
-      return gameboard[2];
-    }
-    return false;
-  };
+let gameState = ['', '', '', '', '', '', '', '', ''];
+let currentPlayer = 0;
+let cp = players[currentPlayer];
+let movesDone = 0;
 
 
-  const clearboard = () => {
-    gameboard = [];
-  };
+function setMove(self, i) {
+  self.classList.add(cp);
+  gameState[i] = cp;
+  movesDone += 1;
+}
 
-  const play = (tool, position) => {
-    gameboard[position] = tool;
-  };
-  return {
-    check, check2, clearboard, play,
-  };
-})();
 
-const display = (() => {
-  const endGame = () => {
-    squares.forEach(button => {
-      button.disabled = true;
-    });
-  };
-  const startNew = () => {
-    endGame();
-    form.style.display = 'block';
-    replay.style.display = 'none';
-  };
-  const start = () => {
-    if (name1.value !== '' && name2.value !== '') {
-      Player1 = Player(name1.value);
-      Player2 = Player(name2.value);
-      return true;
-    }
-    return false;
-  };
-  return {
-    endGame, start, startNew,
-  };
-})();
+function clearState() {
+  gameState = ['', '', '', '', '', '', '', '', ''];
+  movesDone = 0;
 
-const Umpire = (() => {
-  const startGame = () => {
-    form.style.display = 'none';
-    squares.forEach(square => {
-      square.addEventListener('click', () => {
-        if (square.textContent === '') {
-          document.querySelector('.warn').style.display = 'none';
-          // eslint-disable-next-line no-unused-expressions
-          counter % 2 === 0 ? square.textContent = 'X' : square.textContent = 'O';
-          counter += 1;
-          game.play(square.textContent, parseInt(square.id - '1', 10));
-          // eslint-disable-next-line no-unused-expressions
-          Umpire.sayResult() || counter === 9 ? display.endGame() : null;
+  squares.forEach(square => {
+    square.classList.remove('x');
+    square.classList.remove('o');
+  });
+}
+
+
+function changePlayer() {
+  currentPlayer = 1 - currentPlayer;
+  cp = players[currentPlayer];
+}
+
+function myNotice(alert) {
+  document.getElementById('notice').innerText = alert;
+}
+
+function checkIfWon() {
+  if (movesDone > 2) {
+    for (const winState of winStates) {
+      let Xs = 0;
+      let Os = 0;
+
+      for (const squareIndex of winState) {
+        if (gameState[squareIndex] === 'x') {
+          Xs += 1;
+        } else if (gameState[squareIndex] === 'o') {
+          Os += 1;
         }
-      });
-    });
-  };
-  const sayResult = () => {
-    result.innerHTML = '';
-    replay.style.display = 'block';
-    if (game.check() === 'X' || game.check2() === 'X') {
-      result.innerHTML = `Congratulations ${Player1.name}, You are the winner`;
-      return true;
-    } if (game.check() === 'O' || game.check2() === 'O') {
-      result.innerHTML = `Congratulations ${Player2.name}, You are the winner`;
-      return true;
+      }
+
+      if (Xs === 3) {
+        myNotice('X won!');
+        clearState();
+        break;
+      }
+
+      if (Os === 3) {
+        myNotice('O won!');
+        clearState();
+        break;
+      }
     }
-    // eslint-disable-next-line no-unused-expressions
-    counter === 9 ? result.innerHTML = `This is a tie between ${Player1.name} and ${Player2.name},feel free to replay` : null;
-    return false;
-  };
-  const restartGame = () => {
-    counter = 0;
-    replay.style.display = 'none';
-    game.clearboard();
-    squares.forEach(square => {
-      square.textContent = '';
-      square.disabled = false;
-      // eslint-disable-next-line no-unused-expressions
-      display.start() ? Umpire.startGame() : null;
+
+    if (movesDone === 9) {
+      myNotice('Draw!');
+      clearState();
+    }
+  }
+}
+function launchGame() {
+  for (let i = 0; i < squaresArray.length; i += 1) {
+    const square = squaresArray[i];
+
+    square.addEventListener('click', function () {
+      const isTickedAgain = this.classList.contains('x') || this.classList.contains('o');
+
+      if (!isTickedAgain) {
+        setMove(this, i);
+        checkIfWon();
+        changePlayer();
+      }
     });
-  };
-  return {
-    restartGame, sayResult, startGame,
-  };
-})();
-module.exports = { game, display, Umpire };
+  }
+}
+
+
+launchGame();
