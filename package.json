@@ -4,8 +4,11 @@
   "description": "tic tac toe javascript/html/css game",
   "main": "tictactoe.js",
   "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
     "test": "jest",
-    "lint": "eslint . --fix"
+    "lint": "npx eslint src/ --fix",
+    "deploy": "./deploy.sh dist"
   },
   "repository": {
     "type": "git",

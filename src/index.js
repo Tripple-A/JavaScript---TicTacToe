@@ -128,3 +128,12 @@ getDomEl('replay').addEventListener('click', (e) => {
   getDomEl('replay').classList.add('d-none');
   e.preventDefault();
 });
+
+module.exports = {
+  // Game Methods
+  startGame: launchGame,
+  setMov: setMove,
+  clearSt: clearState,
+  changeP: changePlayer,
+  checkWin: checkIfWon,
+};
