@@ -1,53 +1,36 @@
-
-.container {
-  width: 306px;
-  height: 306px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4px;
-  margin: 0 auto;
-  margin-top: 3%;
-  background-color: black;
+* {
+  font-family: sans-serif;
 }
 
-.form {
-  width: 306px;
-  margin-left: auto;
-  margin-right: auto;
+#gameboard {
+  margin: auto;
+  display: flex;
+  width: 312px;
+  flex-wrap: wrap;
 }
 
-.center {
-  width: 306px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.squares {
-  width: 100px;
+#gameboard .square {
   height: 100px;
-
-  /* border:2px solid black; */
-  font-size: 50px;
-  text-align: center;
-  padding-top: 40%;
-  background-color: white;
-  border: transparent;
+  width: 100px;
+  border: 2px solid gray;
+  cursor: pointer;
 }
 
-.warn {
-  background-color: red;
-  text-align: center;
-  width: 30%;
-  font-size: 16px;
-  margin: 0 auto;
-  display: none;
+#gameboard .square.x::after,
+#gameboard .square.o::after {
+  font-size: 4.5rem;
+  position: relative;
+  left: 25px;
+  top: 10px;
 }
 
-.replay {
-  display: none;
-  width: 306px;
-  height: 306px;
-  margin-left: auto;
-  margin-right: auto;
+#gameboard .square.x::after {
+  content: 'X';
+  color: green;
+}
+
+#gameboard .square.o::after {
+  content: 'O';
+  left: 22px;
+  color: red;
 }
