@@ -8,16 +8,20 @@ const getDomEl = (id) => {
 
 const playerNames = [];
 
-getDomEl('ttt-form').addEventListener('submit', (e) => {
-  playerNames[0] = getDomEl('player1').value;
-  playerNames[1] = getDomEl('player2').value;
-  getDomEl('gameboard').classList.remove('d-none');
-  getDomEl('ttt-form').classList.add('d-none');
-  getDomEl(
-    'declare',
-  ).innerText = `${playerNames[0]} is playing X : ${playerNames[1]} is playing O`;
-  e.preventDefault();
-});
+const renderNotice = () => {
+  getDomEl('ttt-form').addEventListener('submit', (e) => {
+    playerNames[0] = (getDomEl('player1').value) ? getDomEl('player1').value : 'Player One';
+    playerNames[1] = (getDomEl('player2').value) ? getDomEl('player2').value : 'Player Two';
+    getDomEl('gameboard').classList.remove('d-none');
+    getDomEl('ttt-form').classList.add('d-none');
+    getDomEl(
+      'declare',
+    ).innerText = `${playerNames[0]} is playing X : ${playerNames[1]} is playing O`;
+    e.preventDefault();
+  });
+};
+
+renderNotice();
 
 
 const gameboard = document.getElementById('gameboard');
@@ -129,11 +133,6 @@ getDomEl('replay').addEventListener('click', (e) => {
   e.preventDefault();
 });
 
-module.exports = {
-  // Game Methods
-  startGame: launchGame,
-  setMov: setMove,
-  clearSt: clearState,
-  changeP: changePlayer,
-  checkWin: checkIfWon,
+export {
+  getDomEl, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame,
 };
