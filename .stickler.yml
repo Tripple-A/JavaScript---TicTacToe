@@ -8,3 +8,4 @@ linters:
 files:
   ignore:
       - 'dist/*'
+      - 'coverage/*'
