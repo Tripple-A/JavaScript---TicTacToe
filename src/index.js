@@ -134,5 +134,5 @@ getDomEl('replay').addEventListener('click', (e) => {
 });
 
 export {
-  getDomEl, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame,
+  getDomEl, renderNotice, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame,
 };
