@@ -68,17 +68,23 @@ describe('Test game logic', () => {
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
-  // it('Player 2 wins in a row', () => {
-  //   //
-  //   myGame.setMove(0);
-  //   myGame.setMove(4);
-  //   myGame.setMove(1);
-  //   myGame.setMove(3);
-  //   myGame.setMove(7);
-  //   myGame.setMove(5);
+  it('Player 2 wins in a row', () => {
+    //
+    myGame.setMove(myGame.squaresArray[0], 0);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[4], 4);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[1], 1);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[3], 3);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[7], 7);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[5], 5);
+    myGame.changePlayer();
 
-  //   expect(Game.winner).toEqual('O');
-  // });
+    expect(myGame.checkIfWon()).toEqual('o');
+  });
 
   // it('Player 1 wins in a column', () => {
   //   //
