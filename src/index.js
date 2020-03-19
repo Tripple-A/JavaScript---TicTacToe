@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable func-names */
 
@@ -6,7 +7,7 @@ const getDomEl = (id) => {
   return domEl;
 };
 
-const playerNames = [];
+const playerNames = ['Player One', 'Player Two'];
 
 const renderNotice = (formID) => {
   getDomEl(formID).addEventListener('submit', (e) => {
@@ -42,19 +43,19 @@ const players = ['x', 'o'];
 let gameState = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 0;
 let cp = players[currentPlayer];
-let movesDone = 0;
+let movesPlayed = 0;
 
 
 function setMove(self, i) {
   self.classList.add(cp);
   gameState[i] = cp;
-  movesDone += 1;
+  movesPlayed += 1;
 }
 
 
 function clearState() {
   gameState = ['', '', '', '', '', '', '', '', ''];
-  movesDone = 0;
+  movesPlayed = 0;
 
   squares.forEach(square => {
     square.classList.remove('x');
@@ -75,7 +76,7 @@ function myNotice(alert) {
 }
 
 function checkIfWon() {
-  if (movesDone > 2) {
+  if (movesPlayed > 2) {
     for (const winState of winStates) {
       let Xs = 0;
       let Os = 0;
@@ -91,19 +92,20 @@ function checkIfWon() {
       if (Xs === 3) {
         myNotice(`${playerNames[0]} won!`);
         clearState();
-        break;
+        return 'x';
       }
 
       if (Os === 3) {
         myNotice(`${playerNames[1]} won!`);
         clearState();
-        break;
+        return 'o';
       }
     }
 
-    if (movesDone === 9) {
+    if (movesPlayed === 9) {
       myNotice('Draw!');
       clearState();
+      return 'draw';
     }
   }
 }
@@ -134,5 +136,20 @@ getDomEl('replay').addEventListener('click', (e) => {
 });
 
 module.exports = {
-  getDomEl, renderNotice, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame, gameboard,
+  getDomEl,
+  renderNotice,
+  setMove,
+  clearState,
+  changePlayer,
+  myNotice,
+  checkIfWon,
+  launchGame,
+  gameboard,
+  players,
+  playerNames,
+  currentPlayer,
+  cp,
+  movesPlayed,
+  gameState,
+  squaresArray,
 };
