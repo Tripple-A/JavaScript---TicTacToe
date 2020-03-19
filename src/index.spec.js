@@ -54,7 +54,7 @@ describe('Test game logic', () => {
     expect(myGame.gameState[0]).toBe('x');
   });
 
-  it('Player 1 wins in a row', () => {
+  test('Player 1 wins in a row', () => {
     //
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
@@ -70,8 +70,8 @@ describe('Test game logic', () => {
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
-  it('Player 2 wins in a row', () => {
-    //
+  test('Player 2 wins in a row', () => {
+    myGame.changePlayer()
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[4], 4);
@@ -105,7 +105,7 @@ describe('Test game logic', () => {
   });
 
   it('Player 1 wins in a diagonal', () => {
-    //
+    myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[1], 1);
@@ -120,18 +120,27 @@ describe('Test game logic', () => {
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
-  // it('Player 1 and Player 2 tie', () => {
-  //   //
-  //   myGame.setMove(1);
-  //   myGame.setMove(0);
-  //   myGame.setMove(2);
-  //   myGame.setMove(4);
-  //   myGame.setMove(8);
-  //   myGame.setMove(5);
-  //   myGame.setMove(3);
-  //   myGame.setMove(6);
-  //   myGame.setMove(7);
+  it('Player 1 and Player 2 draw', () => {
+    //
+    myGame.setMove(myGame.squaresArray[1], 1);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[0], 0);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[2], 2);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[4], 4);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[8], 8);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[5], 5);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[3], 3);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[6], 6);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[7], 7);
+    myGame.changePlayer();
 
-  //   expect(Game.tie).toEqual(true);
-  // });
+    expect(myGame.checkIfWon()).toEqual('draw');
+  });
 });
