@@ -33,20 +33,22 @@ describe('Test DOM', () => {
 describe('Test game logic', () => {
   document.documentElement.innerHTML = html.toString();
   const myGame = require('./index');
-  myGame.renderNotice('ttt-form');
-  myGame.launchGame();
-  myGame.currentPlayer = 0;
-  myGame.movesPlayed = 0;
+  beforeEach(() => {
+    myGame.renderNotice('ttt-form');
+    myGame.launchGame();
+    myGame.currentPlayer = 0;
+    myGame.movesPlayed = 0;
+  });
 
-  it('First player should be X', () => {
+  test('First player should be X', () => {
     expect(myGame.players[0]).toBe('x');
   });
 
-  it('Other player should be O', () => {
+  test('Other player should be O', () => {
     expect(myGame.players[1]).toBe('o');
   });
 
-  it('First Player Can place an X ', () => {
+  test('First Player Can place an X ', () => {
     const sq1 = myGame.squaresArray[1];
     myGame.setMove(sq1, 0);
     expect(myGame.gameState[0]).toBe('x');
@@ -86,27 +88,37 @@ describe('Test game logic', () => {
     expect(myGame.checkIfWon()).toEqual('o');
   });
 
-  // it('Player 1 wins in a column', () => {
-  //   //
-  //   myGame.setMove(0);
-  //   myGame.setMove(1);
-  //   myGame.setMove(3);
-  //   myGame.setMove(5);
-  //   myGame.setMove(6);
+  it('Player 1 wins in a column', () => {
+    //
+    myGame.setMove(myGame.squaresArray[0], 0);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[1], 1);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[3], 3);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[5], 5);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[6], 6);
+    myGame.changePlayer();
 
-  //   expect(Game.winner).toEqual('X');
-  // });
+    expect(myGame.checkIfWon()).toEqual('x');
+  });
 
-  // it('Player 1 wins in a diagonal', () => {
-  //   //
-  //   myGame.setMove(0);
-  //   myGame.setMove(1);
-  //   myGame.setMove(4);
-  //   myGame.setMove(3);
-  //   myGame.setMove(8);
+  it('Player 1 wins in a diagonal', () => {
+    //
+    myGame.setMove(myGame.squaresArray[0], 0);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[1], 1);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[4], 4);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[3], 3);
+    myGame.changePlayer();
+    myGame.setMove(myGame.squaresArray[8], 8);
+    myGame.changePlayer();
 
-  //   expect(Game.winner).toEqual('X');
-  // });
+    expect(myGame.checkIfWon()).toEqual('x');
+  });
 
   // it('Player 1 and Player 2 tie', () => {
   //   //
