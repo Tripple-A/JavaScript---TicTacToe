@@ -65,13 +65,11 @@ describe('Test game logic', () => {
     myGame.setMove(myGame.squaresArray[3], 3);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[2], 2);
-    myGame.changePlayer();
 
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
   test('Player 2 wins in a row', () => {
-    myGame.changePlayer()
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[4], 4);
@@ -83,13 +81,12 @@ describe('Test game logic', () => {
     myGame.setMove(myGame.squaresArray[7], 7);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[5], 5);
-    myGame.changePlayer();
 
     expect(myGame.checkIfWon()).toEqual('o');
   });
 
   it('Player 1 wins in a column', () => {
-    //
+    myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[1], 1);
@@ -99,13 +96,10 @@ describe('Test game logic', () => {
     myGame.setMove(myGame.squaresArray[5], 5);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[6], 6);
-    myGame.changePlayer();
-
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
   it('Player 1 wins in a diagonal', () => {
-    myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[0], 0);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[1], 1);
@@ -115,13 +109,11 @@ describe('Test game logic', () => {
     myGame.setMove(myGame.squaresArray[3], 3);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[8], 8);
-    myGame.changePlayer();
 
     expect(myGame.checkIfWon()).toEqual('x');
   });
 
   it('Player 1 and Player 2 draw', () => {
-    //
     myGame.setMove(myGame.squaresArray[1], 1);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[0], 0);
@@ -139,7 +131,6 @@ describe('Test game logic', () => {
     myGame.setMove(myGame.squaresArray[6], 6);
     myGame.changePlayer();
     myGame.setMove(myGame.squaresArray[7], 7);
-    myGame.changePlayer();
 
     expect(myGame.checkIfWon()).toEqual('draw');
   });
