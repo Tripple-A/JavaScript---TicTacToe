@@ -8,8 +8,8 @@ const getDomEl = (id) => {
 
 const playerNames = [];
 
-const renderNotice = () => {
-  getDomEl('ttt-form').addEventListener('submit', (e) => {
+const renderNotice = (formID) => {
+  getDomEl(formID).addEventListener('submit', (e) => {
     playerNames[0] = (getDomEl('player1').value) ? getDomEl('player1').value : 'Player One';
     playerNames[1] = (getDomEl('player2').value) ? getDomEl('player2').value : 'Player Two';
     getDomEl('gameboard').classList.remove('d-none');
@@ -21,7 +21,7 @@ const renderNotice = () => {
   });
 };
 
-renderNotice();
+renderNotice('ttt-form');
 
 
 const gameboard = document.getElementById('gameboard');
@@ -133,6 +133,6 @@ getDomEl('replay').addEventListener('click', (e) => {
   e.preventDefault();
 });
 
-export {
-  getDomEl, renderNotice, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame,
+module.exports = {
+  getDomEl, renderNotice, setMove, clearState, changePlayer, myNotice, checkIfWon, launchGame, gameboard,
 };

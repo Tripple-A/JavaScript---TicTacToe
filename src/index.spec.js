@@ -1,13 +1,4 @@
-// import {
-//   getDomEl,
-//   renderNotice,
-//   setMove,
-//   clearState,
-//   changePlayer,
-//   myNotice,
-//   checkIfWon,
-//   launchGame,
-// } from './index';
+/* eslint-disable global-require */
 
 const fs = require('fs');
 const path = require('path');
@@ -16,23 +7,39 @@ const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf
 
 jest.dontMock('fs');
 
-const jsdom = require('jsdom');
 
-const { JSDOM } = jsdom;
-
-const dom = new JSDOM(html.toString());
-
-
-describe('Test That gameboard is rendered', () => {
+describe('Test DOM', () => {
+  document.documentElement.innerHTML = html.toString();
+  
   it('Document can be loaded', () => {
-    expect(dom.window.document.body.children.length).toEqual(2);
+    expect(document.body.children.length).toEqual(2);
   });
 
   it('Loaded doucment should have form with three children', () => {
-    expect(dom.window.document.getElementById('ttt-form').children.length).toEqual(3);
+    expect(document.getElementById('ttt-form').children.length).toEqual(3);
   });
 
   it('Loaded doucment should have gameboard with 9 children', () => {
-    expect(dom.window.document.getElementById('gameboard').children.length).toEqual(9);
+    expect(document.getElementById('gameboard').children.length).toEqual(9);
+  });
+  const myGame = require('./index');
+
+  it('Should return contents of a dom element player1', () => {
+    expect(myGame.getDomEl('player1').getAttribute('class')).toBe('form-control');
+  });
+  it('Should return contents of a dom element player2', () => {
+    expect(myGame.getDomEl('player2').getAttribute('class')).toBe('form-control');
+  });
+
+});
+
+describe('Test game logic', () => {
+  document.documentElement.innerHTML = html.toString();
+  const myGame = require('./index');
+  it('Should return string of default player names', () => {
+    myGame.renderNotice('ttt-form');
+    myGame.getDomEl('ttt-form').submit();
+    expect(myGame.getDomEl('declare').innerHTML)
+    .toEqual('Player One is playing X : Player Two is playing O');
   });
 });
