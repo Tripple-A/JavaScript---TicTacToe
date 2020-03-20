@@ -4,7 +4,14 @@
   "description": "tic tac toe javascript/html/css game",
   "main": "tictactoe.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "test:watch": "npm run test -- --watch",
+    "lint": "npx eslint src/ --fix",
+    "deploy": "./deploy.sh dist",
+    "serve": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -22,13 +29,22 @@
   },
   "homepage": "https://github.com/Tripple-A/JavaScript---TicTacToe#readme",
   "dependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1"
+    "jsdom": "^16.2.1"
   },
   "devDependencies": {
-    "eslint-plugin-import": "^2.20.0",
+    "@babel/preset-env": "^7.8.4",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "stylelint": "^13.0.0",
-    "stylelint-config-standard": "^19.0.0"
+    "stylelint-config-standard": "^19.0.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
