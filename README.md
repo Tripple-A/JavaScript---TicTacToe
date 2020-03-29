@@ -39,7 +39,7 @@ This is an implementation of the TicTacToe game using JavaScript(ES6)
 
 <!-- LIVE PREVIEW -->
 ## LIVE PREVIEW
-Find the live version [here](https://eventritte.herokuapp.com/). For demo,sign in as 'john@doe.com'
+Find the live version [here](https://raw.githack.com/Tripple-A/JavaScript---TicTacToe/develop/dist/index.html). 
 Below is a screenshot of the game.
 ![Image](/app/assets/images/proof.gif)
 
