@@ -10,16 +10,30 @@
     <link rel="stylesheet" href="tictactoe.css">
 </head>
 <body>
-    <h2>TIC TAC TOE</h2>
-    <div class="form">
-        <label for="player1"> Player 1 Name</label>
-        <input type="text" class="player1">
-        <label for="player2"> Player 2 Name</label>
-        <input type="text" class="player2">
-        <button id="start" onclick="Umpire.restartGame()">START GAME</button>
+    <div class="container">
+        <div class="row bg-dark header">
+            <div class="col-12 ">
+                <p class="text-center py-3">
+                    Tic Tac Toe<br>
+                    <small class="text-warning" id="declare"></small>
+                </p>
+    
+            </div>
+        </div>
+    </div>
+    <div class="form-group row form">
+        <div class="error offset-sm-3 col-sm-9"></div>
+        <label for="player1" class="col-sm-3 col-form-label">Player 1 </label>
+        <input type="text" class="player1 form-control col-sm-9" placeholder="Type Name Here ..">
+        
+        <label for="player2" class="col-sm-3 col-form-label "> Player 2 </label>
+        <input type="text" class="player2 form-control col-sm-9" placeholder="Type Name Here ..">
+        <div class="offset-sm-3 col-sm-9">
+            <button  id="start" onclick="Umpire.restartGame()" type="submit" class="btn btn-outline-dark btn-block">Start Game</button>
+        </div>    
     </div>
     <div class="warn">Please click an empty box</div> <br>
-    <div class="container">
+    <div class="container1">
         <button class="squares one" id="1"></button>
         <button class="squares two" id="2"></button>
         <button class="squares three" id="3"></button>

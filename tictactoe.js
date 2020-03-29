@@ -11,6 +11,8 @@ let name1 = document.querySelector('.player1')
 let name2 = document.querySelector('.player2')
 let counter = 0
 let result = document.querySelector('.result')
+const declare = document.getElementById('declare')
+const error = document.querySelector('.error')
 
 const game = (() => {
   let gameboard = [];
@@ -73,10 +75,12 @@ const display = (() => {
     replay.style.display = 'none'
       }
       const start = () => {
-
-        if(name1.value != '' && name2.value != '') {
+        if(name1.value == '' || name2.value == '') {
+           error.textContent = 'The name fields cannot be empty'
+          } else {
           Player1 = Player(name1.value)
           Player2 = Player(name2.value)
+          declare.textContent = `${Player1.name} has 'X' : ${Player2.name} has 'O'`
           return true
         }
         return false
