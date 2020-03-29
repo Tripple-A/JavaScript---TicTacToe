@@ -20,7 +20,7 @@ This is an implementation of the TicTacToe game using JavaScript(ES6)
 * There is a game-board which contains 9 boxes,each player would click on a box of choice in order to append his playing tool(either X or Y)
 * The first player automatically gets the 'X' tool and the 2nd player the 'O' tool.
 * A player wins when his tool is aligned vertically, horizontally or diagonally.
-* A player can start a game afresh in which case he and his partner have to re-input their names or restart his previous game in which case,the previous names are on auto-save and will continually be used.
+* A player can start a game afresh after a previous game in which case he and his partner have to re-input their names or restart his previous game in which case,the previous names are on auto-save and will continually be used.
 * When a player wins,the board is still on display but the buttons are disabled and no further move can be made.
 
 <!-- BUILT WITH -->
@@ -39,7 +39,7 @@ This is an implementation of the TicTacToe game using JavaScript(ES6)
 
 <!-- LIVE PREVIEW -->
 ## LIVE PREVIEW
-Find the live version [here](https://raw.githack.com/Tripple-A/JavaScript---TicTacToe/develop/dist/index.html). 
+Find the live version [here](https://raw.githack.com/Tripple-A/JavaScript---TicTacToe/design/tictactoe.html). 
 Below is a screenshot of the game.
 ![Image](/src/proof.png)
 
