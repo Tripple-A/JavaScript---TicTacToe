@@ -77,7 +77,7 @@ const display = (() => {
     endGame();
     form.classList.remove('d-none')
     replay.style.display = 'none'
-    
+    result.textContent=''
       }
       const start = () => {
         if(name1.value == '' || name2.value == '') {
