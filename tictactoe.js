@@ -13,7 +13,7 @@ let counter = 0
 let result = document.querySelector('.result')
 const declare = document.getElementById('declare')
 const error = document.querySelector('.error')
-
+const container = document.querySelector('.container1')
 const game = (() => {
   let gameboard = [];
 
@@ -68,13 +68,16 @@ const display = (() => {
   const endGame = () => {
     squares.forEach(button => {
       button.disabled = true
+      button.classList.add('greyer')
     })
     replay.style.display = 'block'
   }
   const startNew = () => {
+    container.classList.add('d-none')
     endGame();
     form.classList.remove('d-none')
     replay.style.display = 'none'
+    
       }
       const start = () => {
         if(name1.value == '' || name2.value == '') {
@@ -95,11 +98,15 @@ const display = (() => {
 const Umpire = (() => {
   const startGame = () => {
     form.classList.add('d-none')
+    container.classList.remove('d-none')
+    
     squares.forEach(square => {
+      square.classList.remove('greyer')
       square.addEventListener('click', () => {
         if (square.textContent == '') {
           document.querySelector('.warn').style.display = 'none'
           counter % 2 == 0? square.textContent = 'X' : square.textContent = 'O'
+          counter % 2 == 0? square.style.color = 'green' : square.style.color = 'red'
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
         Umpire.sayResult() || counter == 9 ? display.endGame() : null

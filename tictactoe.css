@@ -78,13 +78,35 @@
     font-size: 28px;
     font-family: cursive;
     color: greenyellow;
+    border-radius:5px;
+    padding:10px;
+    text-align:center
 }
+
+.replay{
+    text-align: center;
+}
+
+.greyer{
+    background-color: rgb(219, 215, 215);
+}
+
+.newPlay{
+    background: gold;
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+}
+
    @media screen and (max-width: 480px) {
     .form-group{
         width:80%
     }
     .col-form-label{
         text-align: left;
+    }
+    #declare{
+        font-size: 24px;
     }
   }
 
