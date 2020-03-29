@@ -117,13 +117,13 @@ const Umpire = (() => {
   const sayResult = () => {
     result.innerHTML =''
     if (game.check() == 'X' || game.check2() == 'X') {
-      result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
+      result.innerHTML = `${Player1.name} won`
       return true
     } else if(game.check() == 'O' || game.check2() == 'O') {
-      result.innerHTML = `Congratulations ${Player2.name}, You are the winner`
+      result.innerHTML = `${Player2.name} won`
       return true
     }
-    counter == 9? result.innerHTML = `This is a tie between ${Player1.name} and ${Player2.name},feel free to replay` : null
+    counter == 9? result.innerHTML = `It is a tie` : null
     return false
   }
 const restartGame = () => {

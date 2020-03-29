@@ -28,7 +28,7 @@
         border:2px solid grey;;
         margin-top:-2%;
         background-color: white;
-        
+        font-weight: bold;
     }
 
     .seven,.eight,.nine,.four,.five,.six{
@@ -75,20 +75,24 @@
 }   
 
 .result{
-    font-size: 28px;
+    font-size: 30px;
     font-family: cursive;
-    color: greenyellow;
+    color: white;
     border-radius:5px;
-    padding:10px;
-    text-align:center
+    text-align:center;
+    margin:0px auto;
+    background: linear-gradient(green, greenyellow);
+    margin-top:10px;
+   
+    width:30%;
+    
 }
-
 .replay{
     text-align: center;
 }
 
 .greyer{
-    background-color: rgb(219, 215, 215);
+    background-color:#F7F9FA
 }
 
 .newPlay{
@@ -96,6 +100,7 @@
     padding: 10px;
     border-radius: 5px;
     border:none;
+    font-size: 20px;
 }
 
    @media screen and (max-width: 480px) {
