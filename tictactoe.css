@@ -1,4 +1,14 @@
-    .container1{
+.header{
+    color:white;
+    font-size: 60px;
+    
+}
+.container{
+    margin-bottom:20px;
+    text-align: center;
+}
+
+.container1{
         width:306px;
         height:306px;
         display: grid;
@@ -63,6 +73,12 @@
    button:focus, input:focus{
     outline: none;
 }   
+
+.result{
+    font-size: 28px;
+    font-family: cursive;
+    color: greenyellow;
+}
    @media screen and (max-width: 480px) {
     .form-group{
         width:80%
@@ -72,8 +88,4 @@
     }
   }
 
-   .header{
-       color:white;
-       font-size: 60px;
-       margin-bottom:20px;
-   }
+   

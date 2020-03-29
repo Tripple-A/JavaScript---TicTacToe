@@ -21,31 +21,33 @@ const game = (() => {
     if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
       return gameboard[0]
       } 
-      if(gameboard[1] == gameboard[7] && gameboard[4]== gameboard[1]) {
+      if(gameboard[0] == gameboard[3] && gameboard[0]== gameboard[6]) {
+        return gameboard[3]
+        }   
+      if(gameboard[1] == gameboard[7] && gameboard[1]== gameboard[4]) {
         return gameboard[1]
         } 
         if(gameboard[2] == gameboard[5] && gameboard[2]== gameboard[8]) {
           return gameboard[8]
           } 
-          if(gameboard[0] == gameboard[3] && gameboard[3]== gameboard[6]) {
-            return gameboard[3]
-            } 
+         
       return false
   }
 
   const check2 = () => {
+    if(gameboard[2] == gameboard[4] && gameboard[2]== gameboard[6]) {
+      return gameboard[2]
+      } 
+    if(gameboard[0] == gameboard[4] && gameboard[0]== gameboard[8]) {
+      return gameboard[0]
+      } 
     if(gameboard[3] == gameboard[4] && gameboard[3]== gameboard[5]) {
       return gameboard[3]
       } 
       if(gameboard[6] == gameboard[7] && gameboard[6]== gameboard[8]) {
         return gameboard[6]
         } 
-        if(gameboard[0] == gameboard[4] && gameboard[0]== gameboard[8]) {
-          return gameboard[0]
-          } 
-          if(gameboard[2] == gameboard[4] && gameboard[2]== gameboard[6]) {
-            return gameboard[2]
-            } 
+        
       return false
   }
 
@@ -56,7 +58,6 @@ const game = (() => {
   
   const play = (tool, position) => {
      gameboard[position] = tool
-     console.log(gameboard)
   };
   return {
    check,check2, clearboard, play
@@ -68,10 +69,11 @@ const display = (() => {
     squares.forEach(button => {
       button.disabled = true
     })
+    replay.style.display = 'block'
   }
   const startNew = () => {
     endGame();
-    form.style.display = 'block'
+    form.classList.remove('d-none')
     replay.style.display = 'none'
       }
       const start = () => {
@@ -92,7 +94,7 @@ const display = (() => {
 
 const Umpire = (() => {
   const startGame = () => {
-    form.style.display = 'none'
+    form.classList.add('d-none')
     squares.forEach(square => {
       square.addEventListener('click', () => {
         if (square.textContent == '') {
@@ -101,13 +103,12 @@ const Umpire = (() => {
           counter += 1
           game.play(square.textContent , parseInt(square.id - '1',10))
         Umpire.sayResult() || counter == 9 ? display.endGame() : null
-        }
+        } 
     })
     })    
   }
   const sayResult = () => {
     result.innerHTML =''
-    replay.style.display = 'block'
     if (game.check() == 'X' || game.check2() == 'X') {
       result.innerHTML = `Congratulations ${Player1.name}, You are the winner`
       return true
@@ -121,6 +122,7 @@ const Umpire = (() => {
 const restartGame = () => {
   counter = 0;
   replay.style.display = 'none';
+  result.textContent=''
   game.clearboard();
   squares.forEach(square => {
     square.textContent = ''

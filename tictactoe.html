@@ -17,7 +17,7 @@
                     Tic Tac Toe<br>
                     <small class="text-warning" id="declare"></small>
                 </p>
-    
+                <p class="result"></p>
             </div>
         </div>
     </div>
@@ -33,6 +33,10 @@
         </div>    
     </div>
     <div class="warn">Please click an empty box</div> <br>
+    <div class="replay">
+        <button onclick="Umpire.restartGame()"> Replay</button>
+        <button onclick="display.startNew()">Choose New Players</button>
+    </div>
     <div class="container1">
         <button class="squares one" id="1"></button>
         <button class="squares two" id="2"></button>
@@ -44,11 +48,7 @@
         <button class="squares eight" id="8"></button>
         <button class="squares nine" id="9"></button>
     </div> <br>
-    <div class="replay">
-        <p class="result"></p>
-        <button onclick="Umpire.restartGame()"> Replay</button>
-        <button onclick="display.startNew()">Start New Game</button>
-    </div>
+    
     
     <script src="tictactoe.js"></script>
 </body>
