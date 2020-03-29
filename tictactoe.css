@@ -60,6 +60,9 @@
        text-align: right;
    }
 
+   button:focus, input:focus{
+    outline: none;
+}   
    @media screen and (max-width: 480px) {
     .form-group{
         width:80%
