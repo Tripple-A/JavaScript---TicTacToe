@@ -84,7 +84,7 @@
     background: linear-gradient(green, greenyellow);
     margin-top:10px;
     padding:10px;
-    awidth:30%;
+    width:50%;
     
 }
 .replay{
@@ -114,7 +114,7 @@
         font-size: 24px;
     }
     .result{
-        width:65%
+        width:80%
     }
   }
 
