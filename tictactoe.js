@@ -2,8 +2,6 @@ const Player = name =>{
     return {name}
 }
 
-let Player1 = Player('Jeff');
-let Player2 = Player('Rama')
 const squares = document.querySelectorAll('.squares')
 const form = document.querySelector('.form')
 const replay = document.querySelector('.replay')
@@ -15,7 +13,7 @@ const declare = document.getElementById('declare')
 const error = document.querySelector('.error')
 const container = document.querySelector('.container1')
 const game = (() => {
-  let gameboard = [];
+  let gameboard = ['a','b','c','d','e','f','g','h','i'];
 
   const check = () => {
     if(gameboard[0] == gameboard[1] && gameboard[0]== gameboard[2]) {
@@ -53,7 +51,7 @@ const game = (() => {
 
   
   const clearboard = () => {
-    gameboard = []
+    gameboard = ['a','b','c','d','e','f','g','h','i']
   }
   
   const play = (tool, position) => {
@@ -69,6 +67,7 @@ const display = (() => {
     squares.forEach(button => {
       button.disabled = true
       button.classList.add('greyer')
+      
     })
     replay.style.display = 'block'
   }
@@ -77,7 +76,9 @@ const display = (() => {
     endGame();
     form.classList.remove('d-none')
     replay.style.display = 'none'
-    result.textContent=''
+    result.classList.add('d-none')
+    name1.value = ''
+    name2.value = ''
       }
       const start = () => {
         if(name1.value == '' || name2.value == '') {
@@ -99,7 +100,6 @@ const Umpire = (() => {
   const startGame = () => {
     form.classList.add('d-none')
     container.classList.remove('d-none')
-    
     squares.forEach(square => {
       square.classList.remove('greyer')
       square.addEventListener('click', () => {
@@ -115,21 +115,26 @@ const Umpire = (() => {
     })    
   }
   const sayResult = () => {
-    result.innerHTML =''
     if (game.check() == 'X' || game.check2() == 'X') {
       result.innerHTML = `${Player1.name} won`
+      result.classList.remove('d-none')
       return true
     } else if(game.check() == 'O' || game.check2() == 'O') {
       result.innerHTML = `${Player2.name} won`
+      result.classList.remove('d-none')
       return true
+    } else if(counter == 9) {
+      result.innerHTML = 'It is a tie'
+      result.classList.remove('d-none') 
     }
-    counter == 9? result.innerHTML = 'It is a tie' : null
+     
     return false
   }
 const restartGame = () => {
   counter = 0;
   replay.style.display = 'none';
   result.textContent=''
+  result.classList.add('d-none')
   game.clearboard();
   squares.forEach(square => {
     square.textContent = ''
