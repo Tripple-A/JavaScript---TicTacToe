@@ -123,7 +123,7 @@ const Umpire = (() => {
       result.innerHTML = `${Player2.name} won`
       return true
     }
-    counter == 9? result.innerHTML = `It is a tie` : null
+    counter == 9? result.innerHTML = 'It is a tie' : null
     return false
   }
 const restartGame = () => {
