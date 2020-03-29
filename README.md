@@ -40,7 +40,7 @@ This is an implementation of the TicTacToe game using JavaScript(ES6)
 <!-- LIVE PREVIEW -->
 ## LIVE PREVIEW
 Find the live version [here](https://raw.githack.com/Tripple-A/JavaScript---TicTacToe/design/tictactoe.html). 
-Below is a screenshot of the game on both a laptop screen and a mobile screen
+Below is a screenshot of the game on a mobile screen and a laptop screen.
 ![Image](/src/proof.png)
 
 <!-- REQUIRED INSTALLATION -->
