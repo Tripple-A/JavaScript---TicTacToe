@@ -69,13 +69,27 @@ Install all packages
 your@pc:~$ npm install
 ```
 
-Start the rails server
+Start the server
 
 ```Shell
 your@pc:~$ npm start
 ```
           
 Play the game with a friend.
+
+<!-- run tests -->
+## Run tests
+
+Run all tests
+
+```Shell
+your@pc:~$ npm test
+```
+Run specific tests
+
+```Shell
+your@pc:~$ npm test src/index.spec.js
+```
 
 <!-- Future features -->
 ## Future Features
