@@ -47,7 +47,7 @@ Below is a screenshot of the game on a mobile screen and a laptop screen.
 ## REQUIRED INSTALLATIONS
 * npm
 * webpack
-* jest
+
 
 <!-- INSTALLATION -->
 ## Installation of This Repository
