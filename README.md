@@ -38,13 +38,13 @@ This is an implementation of the TicTacToe game using JavaScript.
 * Jest auto watch
 
 <!-- LIVE PREVIEW -->
-## LIVE PREVIEW
+## Live Preview
 Find the live version [here](https://raw.githack.com/Tripple-A/JavaScript---TicTacToe/design/tictactoe.html). 
 Below is a screenshot of the game on a mobile screen and a laptop screen.
 ![Image](/src/proof.png)
 
 <!-- REQUIRED INSTALLATION -->
-## REQUIRED INSTALLATIONS
+## Required Installations
 * Npm
 * Webpack
 
