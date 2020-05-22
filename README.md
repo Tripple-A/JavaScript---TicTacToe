@@ -1,6 +1,6 @@
 # JavaScript---TicTacToe
 
-This is an implementation of the TicTacToe game using JavaScript(ES6)
+This is an implementation of the TicTacToe game using JavaScript.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ This is an implementation of the TicTacToe game using JavaScript(ES6)
 
 <!-- User features -->
 ## User Features
-* There is a game-board which contains 9 boxes,each player would click on a box of choice in order to append his playing tool(either X or Y)
+* There is a game-board which contains 9 boxes,each player would click on a box of choice in order to append his playing tool(either X or Y).
 * The first player automatically gets the 'X' tool and the 2nd player the 'O' tool.
 * A player wins when his tool is aligned vertically, horizontally or diagonally.
 * A player can start a game afresh after a previous game in which case he and his partner have to re-input their names or restart his previous game in which case,the previous names are on auto-save and will continually be used.
@@ -45,13 +45,13 @@ Below is a screenshot of the game on a mobile screen and a laptop screen.
 
 <!-- REQUIRED INSTALLATION -->
 ## REQUIRED INSTALLATIONS
-* npm
-* webpack
+* Npm
+* Webpack
 
 
 <!-- INSTALLATION -->
 ## Installation of This Repository
-Clone the Repository,
+Clone the Repository.
 
 ```Shell
 your@pc:~$ git clone git@github.com:Tripple-A/JavaScript---TicTacToe.git
