@@ -31,7 +31,7 @@ This is an implementation of the TicTacToe game using JavaScript.
 * Love and passion for code ❤️
 
 <!-- CONCEPTS EMPLOYED -->
-# Concepts Employed
+## Concepts Employed
 * Factory functions
 * JavaScript modules
 * Webpack auto watch
