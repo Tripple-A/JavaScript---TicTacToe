@@ -5,7 +5,7 @@ This is an implementation of the TicTacToe game using JavaScript.
 ## Table of Contents
 
 * [User Features](#user-features)
-* [Built With](#built-with)
+* [Built with](#built-with)
 * [Concepts Employed](#concepts-employed)
 * [Live Preview](#live-preview)
 * [Required Installations](#required-installations)
@@ -23,8 +23,8 @@ This is an implementation of the TicTacToe game using JavaScript.
 * A player can start a game afresh after a previous game in which case he and his partner have to re-input their names or restart his previous game in which case,the previous names are on auto-save and will continually be used.
 * When a player wins,the board is still on display but the buttons are disabled and no further move can be made.
 
-<!-- BUILT WITH -->
-# Built With
+<!-- BUILT wITH -->
+## Built with
 * webpack
 * VsCode
 * Windows
@@ -33,7 +33,7 @@ This is an implementation of the TicTacToe game using JavaScript.
 <!-- CONCEPTS EMPLOYED -->
 # Concepts Employed
 * Factory functions
-* Javascript modules
+* JavaScript modules
 * Webpack auto watch
 * Jest auto watch
 
@@ -45,8 +45,8 @@ Below is a screenshot of the game on a mobile screen and a laptop screen.
 
 <!-- REQUIRED INSTALLATION -->
 ## Required Installations
-* Npm
-* Webpack
+* npm
+* webpack
 
 
 <!-- INSTALLATION -->
