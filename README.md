@@ -25,7 +25,7 @@ This is an implementation of the TicTacToe game using JavaScript.
 
 <!-- BUILT wITH -->
 ## Built with
-* webpack
+* Webpack
 * VsCode
 * Windows
 * Love and passion for code ❤️
@@ -45,8 +45,8 @@ Below is a screenshot of the game on a mobile screen and a laptop screen.
 
 <!-- REQUIRED INSTALLATION -->
 ## Required Installations
-* npm
-* webpack
+* Npm
+* Webpack
 
 
 <!-- INSTALLATION -->
